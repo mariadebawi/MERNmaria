@@ -3,14 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "type": "module"  ,
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "author": "maria@maria",
+  "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "bcryptjs": "^2.4.3"
   }
 }
