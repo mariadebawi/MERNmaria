@@ -122,15 +122,14 @@ var userUpdateProfileReducer = function userUpdateProfileReducer() {
         userInfo: action.payload
       };
 
-    /* case  USER_UPDATE_PROFILE_RESET :
-       return {}
-    */
-
     case _userConstants.USER_UPDATE_PROFILE_FAIL:
       return {
         loading: false,
         error: action.payload
       };
+
+    case _userConstants.USER_UPDATE_PROFILE_RESET:
+      return {};
 
     default:
       return state;

@@ -46,6 +46,8 @@ const getUserProfile =  asyncHandler(async(req , res) =>{
         name : user.name ,
         email : user.email ,
         isAdmin : user.isAdmin ,
+        token : generateToken(user._id)
+
 
     })
    }else {
@@ -78,6 +80,8 @@ const updateUserProfile =  asyncHandler(async(req , res) =>{
             name : UpdateUser.name ,
             email : UpdateUser.email ,
             isAdmin : UpdateUser.isAdmin ,
+            token : generateToken(UpdateUser._id)
+
         })
     }
  

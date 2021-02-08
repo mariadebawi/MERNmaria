@@ -96,7 +96,8 @@ var getUserProfile = (0, _expressAsyncHandler["default"])(function _callee2(req,
             _id: user._id,
             name: user.name,
             email: user.email,
-            isAdmin: user.isAdmin
+            isAdmin: user.isAdmin,
+            token: (0, _generateToken["default"])(user._id)
           });
           _context2.next = 9;
           break;
@@ -149,7 +150,8 @@ var updateUserProfile = (0, _expressAsyncHandler["default"])(function _callee3(r
             _id: UpdateUser._id,
             name: UpdateUser.name,
             email: UpdateUser.email,
-            isAdmin: UpdateUser.isAdmin
+            isAdmin: UpdateUser.isAdmin,
+            token: (0, _generateToken["default"])(UpdateUser._id)
           });
           _context3.next = 15;
           break;

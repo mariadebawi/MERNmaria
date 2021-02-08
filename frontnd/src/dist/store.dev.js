@@ -26,7 +26,7 @@ var reducer = (0, _redux.combineReducers)({
   userLogin: _userReducer.userLoginReducer,
   userRegister: _userReducer.userRegisterReducer,
   userDetails: _userReducer.userDetailsReducer,
-  userProfile: _userReducer.userUpdateProfileReducer
+  userUpdateProfile: _userReducer.userUpdateProfileReducer
 });
 var cartItemFromStorage = localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : [];
 var userInfoFromStorage = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null;

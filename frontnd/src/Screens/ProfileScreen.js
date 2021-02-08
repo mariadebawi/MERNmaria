@@ -8,20 +8,20 @@ import FormContainer from '../components/FormContainer'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 
+import { USER_UPDATE_PROFILE_RESET } from '../constantes/userConstants'
+
 
 import { getUserDetails , updateUserProfile } from '../actions/userActions'
 
 
-const ProfileScreen = ({ location, history }) => {
+const ProfileScreen = ({  history }) => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [name, setName] = useState('')
     const [confirmpassword, setConfirmPassword] = useState('')
-    const [message, setMessage] = useState('')
+    const [message, setMessage] = useState(null)
 
-
-    const redirect = location.search ? location.search.split('=')[1] : '/';
 
     const dispatch = useDispatch()
 
@@ -34,48 +34,42 @@ const ProfileScreen = ({ location, history }) => {
     const {userInfo } = userLogin
 
 
-    const userProfile = useSelector(state => state.userProfile)
+    const userUpdateProfile = useSelector(state => state.userUpdateProfile)
 
-    const {success } = userProfile
+    const {success } = userUpdateProfile
 
 
 
     useEffect(() => {
-
         if (!userInfo) {
-            history.push('/login')
-        }
-        else  if (!user || !user.name || success) {
+          history.push('/login')
+        } else {
+          if (!user || !user.name || success) {
+            
+            dispatch({ type: USER_UPDATE_PROFILE_RESET })
 
             dispatch(getUserDetails('profile'))
-
-        }
-        else {
+          } 
+          
+          else {
+            //console.log(user)
             setName(user.name)
             setEmail(user.email)
+          }
         }
+      }, [dispatch,history, userInfo, user, success])
 
-
-    }, [dispatch, history, user, userInfo , success])
-
-
-    const submitHandler = (e) => {
-        e.preventDefault();
+      
+      const submitHandler = (e) => {
+        e.preventDefault()
         if (password !== confirmpassword) {
-            setMessage('password do not match');
+          setMessage('Passwords do not match')
+        } else {
+         // console.log(user._id)
+          dispatch(updateUserProfile({ id: user._id, name, email, password }))
         }
-        else {
-            //dispatch update user
-            dispatch(updateUserProfile({id:userInfo._id , name , email , password}))
-
-        }
-    }
-
-
-
-
-
-
+      }
+    
 
 
 
@@ -85,17 +79,19 @@ const ProfileScreen = ({ location, history }) => {
                 <FormContainer>
                     <h3>User Profile</h3>
 
-                    {error && <Message variant='danger'> {error}</Message>}
                     {message && <Message variant='danger'> {message}</Message>}
                     {success && <Message variant='success'> Updated Success</Message>}
 
                     {loading && <Loader />}
 
+                    {error && <Message variant='danger'> {error}</Message>}
+
+
                     <Form onSubmit={submitHandler}>
 
 
                         <Form.Group controlId='name'>
-                            <Form.Label>Email Address</Form.Label>
+                            <Form.Label>Name</Form.Label>
                             <Form.Control
                                 type='text'
                                 placeholder='Enter name'
