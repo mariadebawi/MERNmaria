@@ -232,19 +232,6 @@ var updateUserProfile = function updateUserProfile(user) {
               payload: data
             });
             localStorage.setItem('userInfo', JSON.stringify(data));
-            /*
-             
-              dispatch({
-                type : USER_LOGIN_SUCCESS ,
-                payload : data
-            })
-                  localStorage.setItem('userInfo' ,JSON.stringify(data))
-            
-            
-            
-            
-            */
-
             _context5.next = 18;
             break;
 

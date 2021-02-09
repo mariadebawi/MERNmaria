@@ -17,6 +17,8 @@ var _cartReducer = require("./reducers/cartReducer");
 
 var _userReducer = require("./reducers/userReducer");
 
+var _orderReducer = require("./reducers/orderReducer");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var reducer = (0, _redux.combineReducers)({
@@ -26,13 +28,18 @@ var reducer = (0, _redux.combineReducers)({
   userLogin: _userReducer.userLoginReducer,
   userRegister: _userReducer.userRegisterReducer,
   userDetails: _userReducer.userDetailsReducer,
-  userUpdateProfile: _userReducer.userUpdateProfileReducer
+  userUpdateProfile: _userReducer.userUpdateProfileReducer,
+  orderCreate: _orderReducer.orderCreateReducer
 });
 var cartItemFromStorage = localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : [];
 var userInfoFromStorage = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null;
+var shippingAddressFromStorage = localStorage.getItem('shippingAddress') ? JSON.parse(localStorage.getItem('shippingAddress')) : null;
+var paymentMethodFromStorage = localStorage.getItem('paymentMethod') ? JSON.parse(localStorage.getItem('paymentMethod')) : null;
 var initialState = {
   cart: {
-    cartItems: cartItemFromStorage
+    cartItems: cartItemFromStorage,
+    shippingAddress: shippingAddressFromStorage,
+    paymentMethod: paymentMethodFromStorage
   },
   userLogin: {
     userInfo: userInfoFromStorage

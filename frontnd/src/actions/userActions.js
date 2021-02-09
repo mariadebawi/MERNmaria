@@ -160,20 +160,7 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
     })
 
     localStorage.setItem('userInfo' ,JSON.stringify(data))
-    /*
-     
-      dispatch({
-        type : USER_LOGIN_SUCCESS ,
-        payload : data
-    })
-   
-      localStorage.setItem('userInfo' ,JSON.stringify(data))
-    
-    
-    
-    
-    */
-
+  
 
     } catch (error) {
       const message =

@@ -7,6 +7,7 @@ import productRouters from './routes/productRoutes.js'
 
 import usersRouters from './routes/userRoutes.js'
 
+import orderRouters from './routes/orderRoutes.js'
 
 import {NotFound , ErrorHandler} from'./middleware/Errorsmiddleware.js'
 
@@ -34,6 +35,7 @@ app.use('/api/products' , productRouters)
  
 app.use('/api/users' , usersRouters)
 
+app.use('/api/orders' , orderRouters)
 
 
 app.use(NotFound)
